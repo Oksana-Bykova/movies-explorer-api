@@ -2,7 +2,6 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
-const { celebrate, Joi } = require('celebrate');
 const { errors } = require('celebrate');
 
 const router = require('./routes');
@@ -13,12 +12,12 @@ const app = express();
 const auth = require('./middlwares/auth');
 const cors = require('./middlwares/cors');
 
-const { RegURL } = require('./utils/constants');
+const { validateSignup, validateSignin } = require('./middlwares/validation');
 const { login, createUser } = require('./controllers/users');
 
 const { requestLogger, errorLogger } = require('./middlwares/logger');
 
-mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
+mongoose.connect('mongodb://127.0.0.1:27017/bitfilmsdb', {
   useNewUrlParser: true,
 });
 
@@ -36,26 +35,13 @@ app.get('/crash-test', () => {
 
 app.post(
   '/signup',
-  celebrate({
-    body: Joi.object().keys({
-      email: Joi.string().email().required(),
-      password: Joi.string().required(),
-      name: Joi.string().min(2).max(30),
-      about: Joi.string().min(3).max(30),
-      avatar: Joi.string().regex(RegURL),
-    }),
-  }),
+  validateSignup,
   createUser,
 );
 
 app.post(
   '/signin',
-  celebrate({
-    body: Joi.object().keys({
-      email: Joi.string().email().required(),
-      password: Joi.string().required(),
-    }),
-  }),
+  validateSignin,
   login,
 );
 

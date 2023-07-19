@@ -24,7 +24,7 @@ const createMovie = (req, res, next) => {
     });
 };
 
-const deleteMovie = (req, res, next) => Movie.findById(req.params.cardId)
+const deleteMovie = (req, res, next) => Movie.findById(req.params.moviesId)
   .then((movie) => {
     if (!movie) {
       next(new UserNotFound());

@@ -29,8 +29,6 @@ const getUserMe = (req, res, next) => {
 const createUser = (req, res, next) => {
   const {
     name,
-    about,
-    avatar,
     email,
     password,
   } = req.body;
@@ -38,8 +36,6 @@ const createUser = (req, res, next) => {
     .hash(password, 10)
     .then((hashedPassword) => User.create({
       name,
-      about,
-      avatar,
       email,
       password: hashedPassword,
     }))
