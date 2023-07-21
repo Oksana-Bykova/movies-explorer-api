@@ -12,9 +12,7 @@ const validateSignup = celebrate({
   body: Joi.object().keys({
     email: Joi.string().email().required(),
     password: Joi.string().required(),
-    name: Joi.string().min(2).max(30),
-    about: Joi.string().min(3).max(30),
-    avatar: Joi.string().regex(RegURL),
+    name: Joi.string().min(2).max(30).required(),
   }),
 });
 
@@ -37,14 +35,14 @@ const validateCreateMovie = celebrate({
     nameRU: Joi.string().required(),
     nameEN: Joi.string().required(),
     thumbnail: Joi.string().required().regex(RegURL),
-    // movieId: Joi.number().required(),
+    movieId: Joi.number().required(),
   }),
 });
 
 const validateUpdateProfile = celebrate({
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30),
-    about: Joi.string().min(3).max(30),
+    email: Joi.string().email().required(),
   }),
 });
 

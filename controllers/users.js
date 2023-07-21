@@ -56,7 +56,7 @@ const updateProfile = (req, res, next) => {
     req.user._id,
     {
       name: req.body.name,
-      about: req.body.about,
+      email: req.body.email,
     },
     { new: true, runValidators: true },
   )
@@ -68,7 +68,9 @@ const updateProfile = (req, res, next) => {
       res.status(200).send(user);
     })
     .catch((err) => {
-      if (err.name === 'ValidationError') {
+      if (err.code === 11000) {
+        next(new ConflictingRequest());
+      } else if (err.name === 'ValidationError') {
         next(new BadRequest());
       } else {
         next(err);

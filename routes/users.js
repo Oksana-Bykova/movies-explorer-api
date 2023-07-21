@@ -8,12 +8,12 @@ const {
 
 const { validateUpdateProfile } = require('../middlwares/validation');
 
-router.get('/users', getUsers);
+router.get('/', getUsers);
 
-router.get('/users/me', getUserMe);
+router.get('/me', getUserMe);
 
 router.patch(
-  '/users/me',
+  '/me',
   validateUpdateProfile,
   updateProfile,
 );

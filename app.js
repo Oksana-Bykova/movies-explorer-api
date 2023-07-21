@@ -9,15 +9,14 @@ const router = require('./routes');
 const errorHandler = require('./middlwares/error');
 
 const app = express();
-const auth = require('./middlwares/auth');
-const cors = require('./middlwares/cors');
 
-const { validateSignup, validateSignin } = require('./middlwares/validation');
-const { login, createUser } = require('./controllers/users');
+const cors = require('./middlwares/cors');
 
 const { requestLogger, errorLogger } = require('./middlwares/logger');
 
-mongoose.connect('mongodb://127.0.0.1:27017/bitfilmsdb', {
+const { PORT = 3000, DB_URL = 'mongodb://127.0.0.1:27017/bitfilmsdb' } = process.env;
+
+mongoose.connect(DB_URL, {
   useNewUrlParser: true,
 });
 
@@ -33,20 +32,8 @@ app.get('/crash-test', () => {
   }, 0);
 });
 
-app.post(
-  '/signup',
-  validateSignup,
-  createUser,
-);
-
-app.post(
-  '/signin',
-  validateSignin,
-  login,
-);
-
 app.use(cookieParser());
-app.use(auth);
+
 app.get('/signout', (req, res) => {
   res.clearCookie('jwt').send({ message: 'Выход' });
 });
@@ -56,6 +43,6 @@ app.use(errorLogger);
 app.use(errors());
 app.use(errorHandler);
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log('Слушаю порт 3000');
 });
