@@ -14,7 +14,7 @@ const cors = require('./middlwares/cors');
 
 const { requestLogger, errorLogger } = require('./middlwares/logger');
 
-const { PORT = 3000, DB_URL = 'mongodb://127.0.0.1:27017/bitfilmsdb' } = process.env;
+const { PORT = 3001, DB_URL = 'mongodb://127.0.0.1:27017/bitfilmsdb' } = process.env;
 
 mongoose.connect(DB_URL, {
   useNewUrlParser: true,
@@ -34,9 +34,9 @@ app.get('/crash-test', () => {
 
 app.use(cookieParser());
 
-app.get('/signout', (req, res) => {
-  res.clearCookie('jwt').send({ message: 'Выход' });
-});
+// app.get('/signout', (req, res) => {
+//  res.clearCookie('jwt').send({ message: 'Выход выполнен успешно' });
+// });
 
 app.use(router);
 app.use(errorLogger);
