@@ -3,8 +3,8 @@ const allowedCors = [
   'http://praktikum.tk',
   'http://localhost:3000',
   'http://localhost:3001',
-  'https://oksana.bikova.movies.nomoreparties.sbs',
-  'https://api.oksana.bikova.movies.nomoreparties.sbs',
+  'https://oksana.bikova.movies.nomoredomains.xyz',
+  'https://api.oksana.bikova.movies.nomoredomains.xyz',
 ];
 
 const cors = (req, res, next) => {
