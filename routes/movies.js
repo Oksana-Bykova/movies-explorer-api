@@ -10,11 +10,7 @@ const { validateCreateMovie, idValid } = require('../middlwares/validation');
 
 router.get('/', getMovies);
 
-router.post(
-  '/',
-  validateCreateMovie,
-  createMovie,
-);
+router.post('/', validateCreateMovie, createMovie);
 
 router.delete('/:moviesId', idValid, deleteMovie);
 

@@ -2,7 +2,7 @@ const allowedCors = [
   'https://praktikum.tk',
   'http://praktikum.tk',
   'http://localhost:3000',
-  'http://localhost:3005',
+  'http://localhost:3001',
   'https://oksana.bikova.movies.nomoreparties.sbs',
   'https://api.oksana.bikova.movies.nomoreparties.sbs',
 ];

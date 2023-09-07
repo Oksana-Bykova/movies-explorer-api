@@ -30,7 +30,7 @@ app.use(cors);
 
 app.use(requestLogger);
 app.use(helmet());
-app.use(rateLimiter);
+// app.use(rateLimiter);
 
 app.get('/crash-test', () => {
   setTimeout(() => {

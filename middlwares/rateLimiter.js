@@ -1,7 +1,7 @@
 const rateLimit = require('express-rate-limit');
 
 const rateLimiter = rateLimit({
-  max: 5,
+  max: 5000,
   windowMS: 10000, // 10 seconds
   message: 'Слишком много запросов. Пожалуйста, попробуйте позже.',
 });
