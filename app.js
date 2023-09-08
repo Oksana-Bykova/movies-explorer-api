@@ -30,7 +30,7 @@ app.use(cors);
 
 app.use(requestLogger);
 app.use(helmet());
-// app.use(rateLimiter);
+app.use(rateLimiter);
 
 app.get('/crash-test', () => {
   setTimeout(() => {
@@ -39,10 +39,6 @@ app.get('/crash-test', () => {
 });
 
 app.use(cookieParser());
-
-// app.get('/signout', (req, res) => {
-//  res.clearCookie('jwt').send({ message: 'Выход выполнен успешно' });
-// });
 
 app.use(router);
 app.use(errorLogger);

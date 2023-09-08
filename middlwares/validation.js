@@ -1,6 +1,6 @@
 const { celebrate, Joi } = require('celebrate');
 
-const { RegURL } = require('../utils/constants');
+const { RegURL, RegName } = require('../utils/constants');
 
 const idValid = celebrate({
   params: Joi.object().keys({
@@ -11,7 +11,7 @@ const idValid = celebrate({
 const validateSignup = celebrate({
   body: Joi.object().keys({
     email: Joi.string().email().required(),
-    password: Joi.string().required(),
+    password: Joi.string().required().min(6),
     name: Joi.string().min(2).max(30).required(),
   }),
 });
@@ -30,19 +30,19 @@ const validateCreateMovie = celebrate({
     duration: Joi.number().required(),
     year: Joi.string().required(),
     description: Joi.string().required(),
-    image: Joi.string().required().regex(RegURL),
-    trailerLink: Joi.string().required().regex(RegURL),
+    image: Joi.string().required(), // regex(RegURL),
+    trailerLink: Joi.string().required(), // .regex(RegURL),
     nameRU: Joi.string().required(),
     nameEN: Joi.string().required(),
-    thumbnail: Joi.string().required().regex(RegURL),
+    thumbnail: Joi.string().required(), // .regex(RegURL),
     movieId: Joi.number().required(),
   }),
 });
 
 const validateUpdateProfile = celebrate({
   body: Joi.object().keys({
-    name: Joi.string().min(2).max(30),
-    email: Joi.string().email().required(),
+    name: Joi.string().min(2).max(30).regex(RegName),
+    email: Joi.string().email().required().regex(RegURL),
   }),
 });
 
