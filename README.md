@@ -1,12 +1,20 @@
 # movies-explorer-api
 Репозиторий для  дипломного проекта, включающий  бэкенд часть приложения со следующими возможностями: авторизации и регистрации пользователей, операции с карточками и пользователями.  
 
-Адрес репозитория: https://oksana-bykova.github.io/movies-explorer-api/
+Бэкенд часть дипломного проекта в Яндекс.Практикуме.
+Приложение, созданное в партнерстве с BeatFilm. Сервис с регистрацией и личным кабинетом, где пользователь может искать фильмы по ключевым словам.
 
-## Ссылки на проект
+Для пользователя доступен следующий функционал:
 
-IP 130.193.42.120
+Поиск фильмов по ключевым словам
+Просмотр трейлеров
+Сохранение и удаление понравившихся фильмов
+Редактирование своих данных.
 
-Frontend https://oksana.bikova.movies.nomoredomains.xyz/
+Используемые технологии: HTML, CSS, JS, Node.js, Mongo.DB, Webpack, Git, React, REST API.
 
-Backend https://api.oksana.bikova.movies.nomoredomains.xyz/
+ИП 158.160.29.183
+
+Фронтенд https://oksana.bikova.movies.nomoredomains.xyz
+
+Бэкенд https://api.oksana.bikova.movies.nomoredomains.xyz/
